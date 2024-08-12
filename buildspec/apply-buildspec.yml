@@ -1,0 +1,16 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      docker: 19
+  pre_build:
+    commands:
+      - terraform init
+      - terraform validate
+  build:
+    commands:
+      - terrform apply --auto-approve
+
+  post_build:
+    commands:
+      - echo "Executing post-build commands..."
